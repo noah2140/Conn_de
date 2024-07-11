@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <div class="top-bar light-mode">
+        <div class="icons">
+            <span class="icon help-icon" id="help-icon">?</span>
+            <span class="icon settings-icon" id="settings-icon">&#9881;</span>
+        </div>
+    </div>
+
+    <div id="backdrop" class="backdrop"></div>
+
+    <div id="help-modal" class="modal light-mode">
+        <div class="modal-content">
+            <span class="close" id="close-help">&times;</span>
+            <p>This is a modal window explaining how the game is played.</p>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal light-mode">
+        <span class="close" id="close-settings">&times;</span>
+        <div class="modal-content grid-container">
+            <div class="grid-item">
+                <label for="dark-mode-toggle">Dark Mode:</label>
+            </div>
+            <div class="grid-item centered">
+                <input type="checkbox" id="dark-mode-toggle">
+            </div>
+            <div class="grid-item">
+                <span>Kategorie 1 Farbe:</span>
+            </div>
+            <div class="grid-item centered">
+                <input type="color" id="color1" class="color-picker">
+            </div>
+            <div class="grid-item">
+                <span>Kategorie 2 Farbe:</span>
+            </div>
+            <div class="grid-item centered">
+                <input type="color" id="color2" class="color-picker">
+            </div>
+            <div class="grid-item">
+                <span>Kategorie 3 Farbe:</span>
+            </div>
+            <div class="grid-item centered">
+                <input type="color" id="color3" class="color-picker">
+            </div>
+            <div class="grid-item">
+                <span>Kategorie 4 Farbe:</span>
+            </div>
+            <div class="grid-item centered">
+                <input type="color" id="color4" class="color-picker">
+            </div>
+        </div>
+    </div>
+
+    <script src="conn.js"></script>
+</body>
+</html>

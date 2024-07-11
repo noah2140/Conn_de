@@ -1,0 +1,145 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#dark-mode-toggle {
+    transform: scale(1.5); /* Adjust the scale factor as needed */
+}
+
+.body.dark-mode {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+.top-bar {
+    background-color: #444444;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Align items vertically in the center */
+}
+
+.top-bar.light-mode {
+    background-color: #f1f1f1;
+    color: #000000;
+}
+
+.top-bar.dark-mode {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+.icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1; /* Ensure consistent line-height */
+    display: flex;
+    align-items: center; /* Vertically center the icon within its flex container */
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: none;
+    background: white;
+    width: 70%; 
+    max-width: 800px; 
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.modal.light-mode {
+    background: white;
+    color: black;
+}
+
+.modal.dark-mode {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+.modal-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.modal-content.light-mode {
+    background: white;
+    color: black;
+}
+
+.modal-content.dark-mode {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+.grid-container {
+    margin-top: 3vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Aligns centered items horizontally */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    margin-right: 10px;
+}
+
+.color-box.light-mode {
+    border-color: #000;
+}
+
+.color-box.dark-mode {
+    border-color: #fff;
+}
