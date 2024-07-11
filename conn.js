@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.color-box').forEach(box => {
             box.classList.toggle('dark-mode', isDarkMode);
         });
+        console.log(isDarkMode);
         // Save Dark Mode setting to cookie
         document.cookie = `darkMode=${isDarkMode}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
     }
@@ -51,30 +52,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for dark mode toggle
     darkModeToggle.addEventListener('change', toggleDarkMode);
 
-    function saveColorSettings() {
+    function saveSettings() {
+        localStorage.setItem('darkMode', darkModeToggle.checked ? 'true' : 'false');
         colorPickers.forEach((picker, index) => {
-            const colorValue = picker.value;
-            document.cookie = `color${index + 1}=${colorValue}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+            localStorage.setItem(`color${index + 1}`, picker.value);
         });
     }
 
-    colorPickers.forEach(picker => {
-        picker.addEventListener('change', saveColorSettings);
-    });
-
     function loadSettings() {
-        const cookies = document.cookie.split('; ');
-        cookies.forEach(cookie => {
-            const [name, value] = cookie.split('=');
-            if (name === 'darkMode') {
-                darkModeToggle.checked = value === 'true';
-                toggleDarkMode();
-            } else if (name.startsWith('color')) {
-                const index = parseInt(name.substring(5)) - 1;
-                colorPickers[index].value = value;
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        darkModeToggle.checked = isDarkMode;
+        toggleDarkMode(); // Function to apply dark mode based on the toggle state
+        colorPickers.forEach((picker, index) => {
+            const colorValue = localStorage.getItem(`color${index + 1}`);
+            if (colorValue) {
+                picker.value = colorValue;
             }
         });
     }
+
+    darkModeToggle.addEventListener('change', () => {
+        saveSettings();
+        toggleDarkMode(); // Function to apply dark mode based on the toggle state
+    });
+
+    // Event listener for color picker change
+    colorPickers.forEach(picker => {
+        picker.addEventListener('change', saveSettings);
+    });
 
     loadSettings();
 });
